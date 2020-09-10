@@ -1,0 +1,27 @@
+from selenium import webdriver
+from bs4 import BeautifulSoup
+import mysql.connector as mc
+import urllib.request as ur
+
+mydb = mc.connect(
+    host = "localhost",
+    user = "root",
+    password = "",
+    database = "fyp jc2007"
+    )
+
+mycursor = mydb.cursor()
+sql_select_query = "select * from stock_list"
+mycursor.excute(sql_select_query)
+records = mycursor.fetchall()
+count = mycursor.rowcount
+int i = 0
+while i<count
+for row in records:
+    company_id = row[0]
+    url = ("https://query1.finance.yahoo.com/v7/finance/download/%s?period1=1441929600&period2=1599782400&interval=1d&events=history" %(company_id))
+    ur.urlretrieve(url, "%s.csv" %(company_id))
+    i ++
+
+
+driver = webdriver.Chrome("C:\Program Files (x86)\Google\Chrome\Application\chromedriver.exe")
