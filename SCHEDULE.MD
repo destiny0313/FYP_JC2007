@@ -1,7 +1,7 @@
 # Time Schedule
 - [x] Decide on topic
 - [x] Complete Proposal
-- [ ] Set up SQL Database
+- [x] Set up SQL Database
 - [ ] Implement Crawler
 - [ ] Implement Fundamental Analysis
 - [ ] Implement Sentiment Analysis
