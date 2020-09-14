@@ -1,5 +1,3 @@
-from selenium import webdriver
-from bs4 import BeautifulSoup
 import mysql.connector as mc
 import urllib.request as ur
 
