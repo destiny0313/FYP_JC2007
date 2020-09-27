@@ -1,3 +1,10 @@
+# -*- coding: utf-8 -*-
+"""
+Spyder Editor
+
+This is a temporary script file.
+"""
+
 import mysql.connector as mc
 import urllib.request as ur
 
@@ -17,19 +24,16 @@ count = mycursor.rowcount
 
 sql = "INSERT INTO 'historical_price' ('company_id', 'filepath') VALUES (%s, %s)"
 
-int i = 0
-while i < count :
+
+while count==0 :
     for row in records :
         company_id = row[0]
         url = ("https://query1.finance.yahoo.com/v7/finance/download/" + company_id + "?period1=1441929600&period2=1599782400&interval=1d&events=history")
         ur.urlretrieve(url, company_id + ".csv")
-        path = ("C:\python\" + company_id + ".csv")
+        path = (r"C:\Users\ccc5c\.spyder-py3" + company_id + ".csv")
         mycursor.execute(sql, (company_id, path))
-        i ++
+        count-=1
 
 mydb.commit()
-finally:
+ 
 mycursor.close()
-
-
-
