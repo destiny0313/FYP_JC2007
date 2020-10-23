@@ -16,15 +16,15 @@ sql_select_query = "select * from stock_list;"
 mycursor.execute(sql_select_query)
 records = mycursor.fetchall()
 
-sql = "INSERT IGNORE INTO annualreport_2019 (Company_ID, filepath) VALUES (%s, %s);"
+sql = "INSERT IGNORE INTO annualreport (Company_ID, filepath) VALUES (%s, %s);"
 count = 0
 
 for row in records :
     company_id = row[0]
     url = ("https://www.annualreports.com/HostedData/AnnualReports/PDF/NYSE_" + company_id + "_2019.pdf")
     try:
-        ur.urlretrieve(url, "C:\\Users\\user\\fyp_reports\\" + company_id + ".pdf")
-        path = ("C:\\Users\\user\\fyp_reports\\" + company_id + ".pdf")
+        ur.urlretrieve(url, "C:\\Users\\user\\fyp_ar\\" + company_id + "_AnnualReport_2019.pdf")
+        path = ("C:\\Users\\user\\fyp_ar\\" + company_id + "_AnnualReport_2019.pdf")
         mycursor.execute(sql, (company_id, path))
     except HTTPError as error:
         print(error);

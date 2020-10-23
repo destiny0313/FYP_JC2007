@@ -11,16 +11,16 @@ mydb = mc.connect(
     host = "localhost",
     user = "root",
     password = "",
-    database = "fyp jc2007"
+    database = "FYP"
     )
 
 mycursor = mydb.cursor()
-sql_insert = "INSERT IGNORE INTO stock_list (Stock_Code, Company_Name) VALUES (%s, %s);"
+sql_insert = "INSERT IGNORE INTO stock_list (stock_code, company_name) VALUES (%s, %s);"
 
 
 # Connect chrome browser to open NYSE offical page
 
-driver = webdriver.Chrome("C:\Program Files (x86)\Google\Chrome\Application\chromedriver.exe")
+driver = webdriver.Chrome("/data/opt/users/destiny/chromedriver.exe")
 driver.get("https://www.nyse.com/listings_directory/stock")
 
 
