@@ -20,7 +20,7 @@ sql_insert = "INSERT IGNORE INTO stock_list (stock_code, company_name) VALUES (%
 
 # Connect chrome browser to open NYSE offical page
 
-driver = webdriver.Chrome(executable_path="/data/opt/users/destiny/chromedriver.exe")
+driver = webdriver.Chrome(executable_path="/data/opt/users/destiny/chromedriver")
 driver.get("https://www.nyse.com/listings_directory/stock")
 
 
