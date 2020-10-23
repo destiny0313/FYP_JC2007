@@ -8,7 +8,7 @@ mydb = mc.connect(
     host = "localhost",
     user = "root",
     password = "",
-    database = "fyp jc2007"
+    database = "FYP"
 )
 
 mycursor = mydb.cursor()
