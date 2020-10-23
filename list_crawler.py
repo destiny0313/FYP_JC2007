@@ -62,6 +62,7 @@ while i <= 653:
             
             if j == 2:
                 name = td.text
+                print(td.text)
                 j = j - 1
                 continue
                 
