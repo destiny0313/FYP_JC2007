@@ -3,9 +3,13 @@ import selenium.webdriver.support.ui as ui
 import time
 import mysql.connector as mc
 from bs4 import BeautifulSoup
+from pyvirtualdisplay import Display
 
 
 # MySQL server connection
+
+display = Display(visible=0, size=(800,800))
+display.start()
 
 mydb = mc.connect(
     host = "localhost",
