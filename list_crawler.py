@@ -3,14 +3,10 @@ import selenium.webdriver.support.ui as ui
 import time
 import mysql.connector as mc
 from bs4 import BeautifulSoup
-from pyvirtualdisplay import Display
+from selenium.webdriver.chrome.options import Options
 
 
 # MySQL server connection
-
-display = Display(visible=0, size=(800,800))
-display.start()
-
 mydb = mc.connect(
     host = "localhost",
     user = "root",
@@ -23,7 +19,11 @@ sql_insert = "INSERT IGNORE INTO stock_list (stock_code, company_name) VALUES (%
 
 
 # Connect chrome browser to open NYSE offical page
-
+options = Options()
+options.add_argument('--headless')
+options.add_argument('--disable-gpu')
+options.add_argument('--no-sandbox')
+                     
 driver = webdriver.Chrome(executable_path="/data/opt/users/destiny/chromedriver")
 driver.get("https://www.nyse.com/listings_directory/stock")
 
