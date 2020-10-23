@@ -38,7 +38,7 @@ i = 1
 j = 1
 
 while i <= 653:
-    time.sleep(3)
+    time.sleep(1)
     k = i + 1
     wait = ui.WebDriverWait(driver, 10)
     html = driver.page_source
