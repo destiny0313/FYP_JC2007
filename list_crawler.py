@@ -70,7 +70,7 @@ while i <= 653:
     next_page = driver.find_element_by_link_text(str(k))
     driver.execute_script("arguments[0].click();",next_page)
     i = i + 1
-    time.sleep(0.1)
+    time.sleep(1)
 
 html = driver.page_source
 soup = BeautifulSoup(html,'html.parser')
