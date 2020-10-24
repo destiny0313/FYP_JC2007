@@ -23,7 +23,7 @@ for row in records :
     
     url = ("https://query1.finance.yahoo.com/v7/finance/download/" + company_id + "?period1=1441929600&period2=1599782400&interval=1d&events=history")
     try:
-        ur.urlretrieve(url, "//data//opt//users//destiny//FYP//Historical_Data" + company_id + ".csv")
+        ur.urlretrieve(url, "//data//opt//users//destiny//FYP//Historical_Data//" + company_id + ".csv")
 
     except HTTPError as error:
         print(error)
