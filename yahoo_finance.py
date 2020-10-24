@@ -16,16 +16,14 @@ sql_select_query = "select * from stock_list;"
 mycursor.execute(sql_select_query)
 records = mycursor.fetchall()
 
-sql = "INSERT IGNORE INTO historical_price (Company_ID, filepath) VALUES (%s, %s);"
 count = 0
 
 for row in records :
     company_id = row[0]
     url = ("https://query1.finance.yahoo.com/v7/finance/download/" + company_id + "?period1=1441929600&period2=1599782400&interval=1d&events=history")
     try:
-        ur.urlretrieve(url, "C:\\Users\\user\\fyp_price\\" + company_id + ".csv")
-        path = ("C:\\Users\\user\\fyp_price\\" + company_id + ".csv")
-        mycursor.execute(sql, (company_id, path))
+        ur.urlretrieve(url, "/data/opt/users/destiny/Historical_Price/" + company_id + ".csv")
+
     except HTTPError as error:
         print(error);
         mycursor.execute(sql, (company_id, "No data available"))

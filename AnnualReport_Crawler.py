@@ -8,7 +8,7 @@ mydb = mc.connect(
     host = "localhost",
     user = "root",
     password = "",
-    database = "fyp jc2007"
+    database = "FYP"
 )
 
 mycursor = mydb.cursor()
@@ -16,16 +16,13 @@ sql_select_query = "select * from stock_list;"
 mycursor.execute(sql_select_query)
 records = mycursor.fetchall()
 
-sql = "INSERT IGNORE INTO annualreport (Company_ID, filepath) VALUES (%s, %s);"
 count = 0
 
 for row in records :
     company_id = row[0]
     url = ("https://www.annualreports.com/HostedData/AnnualReports/PDF/NYSE_" + company_id + "_2019.pdf")
     try:
-        ur.urlretrieve(url, "C:\\Users\\user\\fyp_ar\\" + company_id + "_AnnualReport_2019.pdf")
-        path = ("C:\\Users\\user\\fyp_ar\\" + company_id + "_AnnualReport_2019.pdf")
-        mycursor.execute(sql, (company_id, path))
+        ur.urlretrieve(url, "/data/opt/users/destiny/Annual_Report/" + company_id + "_AR_2019.pdf")
     except HTTPError as error:
         print(error);
         mycursor.execute(sql, (company_id, "No data available"))
