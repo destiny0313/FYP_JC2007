@@ -25,7 +25,7 @@ for row in records :
         ur.urlretrieve(url, "/data/opt/users/destiny/Historical_Price/" + company_id + ".csv")
 
     except HTTPError as error:
-        print(error);
+        print(error+ " - "+company_id);
         mycursor.execute(sql, (company_id, "No data available"))
     mydb.commit()
     count = count + 1
