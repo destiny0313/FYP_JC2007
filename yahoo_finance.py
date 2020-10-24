@@ -8,7 +8,7 @@ mydb = mc.connect(
     host = "localhost",
     user = "root",
     password = "",
-    database = "FYP"
+    database = "fyp jc2007"
 )
 
 mycursor = mydb.cursor()
@@ -20,12 +20,13 @@ count = 0
 
 for row in records :
     company_id = row[0]
+    
     url = ("https://query1.finance.yahoo.com/v7/finance/download/" + company_id + "?period1=1441929600&period2=1599782400&interval=1d&events=history")
     try:
-        ur.urlretrieve(url, "/data/opt/users/destiny/Historical_Price/" + company_id + ".csv")
+        ur.urlretrieve(url, "//data//opt//users//destiny//FYP//Historical_Data" + company_id + ".csv")
 
     except HTTPError as error:
-        print(error+ " - "+company_id)
+        print(error)
     mydb.commit()
     count = count + 1
     if count%1000 == 0:
