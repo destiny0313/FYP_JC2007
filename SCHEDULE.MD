@@ -9,6 +9,9 @@
   - [ ] Annual Report Crawler
 - [ ] Implement Fundamental Analysis ~~(20 Oct 2020)~~ **Modified: (10 Nov 2020)**
 - [x] Implement Sentiment Analysis ~~(10 Nov 2020)~~ **Modified: (20 Oct 2020)**
+  - [x] Build extended lexicon for finance field sentiment analysis
+  - [x] Test with tweets
+  - [ ] Build result database
 - [ ] Implement Technical Analysis (10 Jan 2021)
 - [ ] Evaluate Performance (20 Jan 2021)
 - [ ] Actual Analysis (20 Mar 2021)
