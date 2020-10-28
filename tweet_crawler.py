@@ -1,7 +1,8 @@
 import tweepy
 import mysql.connector as mc
+from datetime import date
 
-
+today = date.today()
 
 mydb = mc.connect(
     host = "localhost",
@@ -37,7 +38,7 @@ for x in stocklist:
     # Create API object
     api = tweepy.API(auth, wait_on_rate_limit=(True))
 
-    tweets = tweepy.Cursor(api.search, q=new_search, lang="en", result_type="recent").items(5)
+    tweets = tweepy.Cursor(api.search, q=new_search, lang="en", result_type="recent", since="2018-1-1", until = today.strftime("%y-%m-%d")).items()
 
     for tweet in tweets:
         mycursor.execute(sql_insert,(x[0],tweet.author.name,tweet.text,str(tweet.created_at)))
