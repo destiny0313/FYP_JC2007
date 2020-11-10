@@ -42,7 +42,7 @@ with open('//data//opt//users//destiny//resource//Stock_List.csv','w',newline=''
             
             for td in tdlist:
                 if ((stock != '')and(name != '')):
-                    writer.writerow({'ticket' : stock, 'Company Name' : name})
+                    writer.writerow({'Ticket' : stock, 'Company Name' : name})
                     stock = ''
                     name = ''
                 
