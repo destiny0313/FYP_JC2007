@@ -7,11 +7,13 @@ Created on Tue Nov 10 14:30:01 2020
 
 import yfinance as yf
 import csv
-import time
+import pandas as pd
 
 with open('//data//opt//users//destiny//resource//Stock_List.csv','r') as stocklist:
     rstocklist = csv.reader(stocklist)
     for row in rstocklist:
-        print(row)
-        print(row[0])
-        print(row[1])
+       stock = yf.Ticker(row[0])
+       hist = stock.hist(period="max")
+       df = pd.DataFrame(hist)
+       name = "//data//opt//users//destiny//resource//history//"+row[0]+"_history.csv"
+       df.to_csv(name)
