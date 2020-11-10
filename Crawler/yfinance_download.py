@@ -9,10 +9,22 @@ import yfinance as yf
 import csv
 import pandas as pd
 
-with open('//data//opt//users//destiny//resource//Stock_List.csv','r') as stocklist:
+
+####### Debug purpose #######
+#with open("C:\\Users\\desti\\Documents\\GitHub\\FYP_JC2007\\Source\\Stock_List.csv",'r')as stocklist:
+#    rstocklist = csv.reader(stocklist)
+#    next(rstocklist)
+#    for row in rstocklist:
+#        stock = yf.Ticker(row[0])
+#        print(row[0])
+#        print(stock.history(period="max"))
+#       hist = stock.history(period="max")
+#       df = pd.DataFrame(hist)
+
+with open('C:\\Users\\desti\\Documents\\GitHub\\FYP_JC2007\\Source\\Stock_List.csv','r') as stocklist:
     rstocklist = csv.reader(stocklist)
+    next(rstocklist)
     for row in rstocklist:
-        print(row[0])
         stock = yf.Ticker(row[0])
         hist = stock.history(period="max")
         df = pd.DataFrame(hist)
