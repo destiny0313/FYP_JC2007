@@ -4,7 +4,7 @@ import time
 import csv
 from bs4 import BeautifulSoup
 from selenium.webdriver.chrome.options import Options
-with open('Stock_List.csv','w',newline='') as stocklist:
+with open('//data//opt//users//destiny//resource//Stock_List.csv','w',newline='') as stocklist:
 
     fields = ['Ticket','Company Name']
     writer = csv.DictWriter(stocklist, fields)
