@@ -22,10 +22,9 @@ for row in records :
     company_id = row[0]
     url = ("https://www.annualreports.com/HostedData/AnnualReports/PDF/NYSE_" + company_id + "_2019.pdf")
     try:
-        ur.urlretrieve(url, "/data/opt/users/destiny/Annual_Report/" + company_id + "_AR_2019.pdf")
+        ur.urlretrieve(url, "//data//opt//users//destiny//Annual_Report//" + company_id + "_AR_2019.pdf")
     except HTTPError as error:
         print(error);
-        mycursor.execute(sql, (company_id, "No data available"))
     mydb.commit()
     count = count + 1
     if count%1000 == 0:
