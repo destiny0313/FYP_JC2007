@@ -13,7 +13,7 @@ with open('//data//opt//users//destiny//resource//Stock_List.csv','r') as stockl
     rstocklist = csv.reader(stocklist)
     for row in rstocklist:
        stock = yf.Ticker(row[0])
-       hist = stock.hist(period="max")
+       hist = stock.history(period="max")
        df = pd.DataFrame(hist)
        name = "//data//opt//users//destiny//resource//history//"+row[0]+"_history.csv"
        df.to_csv(name)
