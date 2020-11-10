@@ -11,4 +11,4 @@ import time
 
 with open('//data//opt//users//destiny//resource//Stock_List.csv','r') as stocklist:
     for i, line in enumerate(stocklist):
-        print "line{1} = {1}".format(i, line.split())
+        print "line{0} = {1}".format(i, line.split())
