@@ -10,5 +10,8 @@ import csv
 import time
 
 with open('//data//opt//users//destiny//resource//Stock_List.csv','r') as stocklist:
-    for i, line in enumerate(stocklist):
-        print "line{0} = {1}".format(i, line.split())
+    rstocklist = csv.reader(stocklist)
+    for row in rstocklist:
+        print(row)
+        print(row[0])
+        print(row[1])
