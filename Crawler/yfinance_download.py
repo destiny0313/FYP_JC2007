@@ -21,7 +21,7 @@ import pandas as pd
 #       hist = stock.history(period="max")
 #       df = pd.DataFrame(hist)
 
-with open('C:\\Users\\desti\\Documents\\GitHub\\FYP_JC2007\\Source\\Stock_List.csv','r') as stocklist:
+with open('//data//opt//users//destiny//resource//Stock_List.csv','r') as stocklist:
     rstocklist = csv.reader(stocklist)
     next(rstocklist)
     for row in rstocklist:
