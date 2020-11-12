@@ -6,19 +6,8 @@ Created on Thu Oct 29 20:33:07 2020
 """
 
 import FundamentalAnalysis as fa
-import mysql.connector as mc
+import csv
 
-mydb = mc.connect(
-    host = "localhost",
-    user = "root",
-    password = "",
-    database = "fyp jc2007"
-    )
-
-mycursor = mydb.cursor()
-sql_query = "SELECT * FROM stock_list"
-mycursor.execute(sql_query)
-stocks = mycursor.fetchall()
 
 api_key = "6e5ecde1494f8945f457010be7b7920e"
 revenue = {}
