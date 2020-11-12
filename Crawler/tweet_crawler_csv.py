@@ -25,7 +25,7 @@ with open('//data//opt//users//destiny//resource//Stock_List.csv','r') as stockl
     
     # crawl data for each of the stocks in our list
     
-        for row in stocklist:
+        for row in rstocklist:
             
             tweetsPerQry = 100
             maxTweets = 1000000
