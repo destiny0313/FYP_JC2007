@@ -125,7 +125,11 @@ with open("/data/opt/users/destiny/resource/Stock_List.csv") as stocklist:
                     Dividend_Yield = np.NaN
                 else:
                     Dividend_Yield = float(km_r[30][1])
-                Market_Capital = float(km_r[10][1])
+                    
+                if km_r[10][1] == "":
+                    Market_Capital = np.NaN
+                else:
+                    Market_Capital = float(km_r[10][1])
         except IOError:
             Working_Capital = np.NaN
             ROE = np.NaN
