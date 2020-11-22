@@ -23,7 +23,7 @@ def create_line_graph(df):
 
     name=""
     data = {}
-    for stock in df['Stock_Code']:
+    for stock in df['Ticket']:
         data[stock] = yf.download(stock,period='max')
         name = str(stock)
         
@@ -73,7 +73,7 @@ line_card = dbc.Card(line_graph, style=card)
 
 stockDropdown = dcc.Dropdown(
     id='stock-dropdown', 
-    options=[{'label': data, 'value': data} for data in df['Stock_Code']], 
+    options=[{'label': data, 'value': data} for data in df['Ticket']], 
     multi=False, 
     searchable=True,
     value=['AAPL']
@@ -84,7 +84,7 @@ widget_card = dbc.Card([
                     ], style=card)
 
 def get_filtered_df(df, stocks):
-    filtered_df = df[(df['Stock_Code'].isin([stocks]))]
+    filtered_df = df[(df['Ticket'].isin([stocks]))]
     
     return filtered_df
 
