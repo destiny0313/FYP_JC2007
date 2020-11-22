@@ -91,4 +91,4 @@ with open("/data/opt/users/destiny/resource/Stock_List.csv") as stocklist:
                                   "Dividend_Yield":Dividend_Yield,"Market_Capital":Market_Capital}, index=[stockname])
 
         tmp_df = tmp_df.append(stockname)
-        print(tmp_df)
+    print(tmp_df)
