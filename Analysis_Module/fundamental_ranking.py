@@ -14,6 +14,7 @@ with open("/data/opt/users/destiny/resource/Stock_List.csv") as stocklist:
     next(stocklist_r)
     
     for row in stocklist_r:
+        print(row[0])
 
 
         ######################################################  
