@@ -82,13 +82,13 @@ with open("/data/opt/users/destiny/resource/Stock_List.csv") as stocklist:
     ######################################################  
     #              Put data into dataframe               #
     ######################################################
-    stockname = row[0]
-    stockname = pd.DataFrame({"Country":country,"Sector":sector,"Industry":industry,
-                            "Net_Income_Ratio":Net_Income_Ratio,"Operating_Ratio_Income":Operating_Ratio_Income,
-                            "Gross_Peofit_Ratio":Gross_Profit_Ratio,"EPS":EPS,"Working_Capital":Working_Capital,
-                            "ROE":ROE,"PE_Ratio":PE_Ratio,"PB_Ratio":PB_Ratio,"Current_Ratio":Current_Ratio,
-                            "Debt_To_Equity":Debt_To_Equity,"Debt_To_Asset":Debt_To_Asset,
-                            "Dividend_Yield":Dividend_Yield,"Market_Capital":Market_Capital}, index=[stockname])
+        stockname = row[0]
+        stockname = pd.DataFrame({"Country":country,"Sector":sector,"Industry":industry,
+                                  "Net_Income_Ratio":Net_Income_Ratio,"Operating_Ratio_Income":Operating_Ratio_Income,
+                                  "Gross_Peofit_Ratio":Gross_Profit_Ratio,"EPS":EPS,"Working_Capital":Working_Capital,
+                                  "ROE":ROE,"PE_Ratio":PE_Ratio,"PB_Ratio":PB_Ratio,"Current_Ratio":Current_Ratio,
+                                  "Debt_To_Equity":Debt_To_Equity,"Debt_To_Asset":Debt_To_Asset,
+                                  "Dividend_Yield":Dividend_Yield,"Market_Capital":Market_Capital}, index=[stockname])
 
-    tmp_df = tmp_df.append(stockname)
-    print(tmp_df)
+        tmp_df = tmp_df.append(stockname)
+        print(tmp_df)
