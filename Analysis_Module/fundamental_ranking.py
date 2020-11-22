@@ -7,7 +7,8 @@ tmp_df = pd.DataFrame(columns=["Country","Sector","Industry","Net_Income_Ratio",
                                "PE_Ratio","PB_Ratio","Current_Ratio","Debt_To_Equity","Debt_To_Asset",
                                "Dividend_Yield","Market_Capital"])
 
-with open("C:\\Users\\desti\\Documents\\GitHub\\FYP_JC2007\\Source\\Stock_List.csv") as stocklist:
+with open("~/fyp/FYP_JC2007/Source/Stock_List.csv") as stocklist:
+#with open("C:\\Users\\desti\\Documents\\GitHub\\FYP_JC2007\\Source\\Stock_List.csv") as stocklist:
     stocklist_r = csv.reader(stocklist)
     next(stocklist_r)
     
