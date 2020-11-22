@@ -1,0 +1,27 @@
+key_metric:
+
+ptbratio (lower better)
+roe (compared with same industry)
+current ratio
+debttoequity
+debttoasset
+DividendYield
+PEratio
+mktcap
+working capital
+
+
+income statement:
+
+profit margin (net income/revenue)
+eps
+gross profit ratio
+operating income ratio
+netincomeratio
+
+
+profile:
+
+country
+sector
+industry
