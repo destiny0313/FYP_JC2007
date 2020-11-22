@@ -25,8 +25,14 @@ with open("/data/opt/users/destiny/resource/Stock_List.csv") as stocklist:
             with open(filename) as profile:
             #with open("C:\\Users\\desti\\Documents\\GitHub\\FYP_JC2007\\Example\\Profile.csv") as profile:
                 profile_r = [row for row in csv.reader(profile)]
-                country = profile_r[21][1]
-                sector = profile_r[20][1]
+                if profile_r[21][1]=="":
+                    country = "NaN"
+                else:
+                    country = profile_r[21][1]
+                if profile_r[20][1]=="":
+                    sector="NaN"
+                else:
+                    sector = profile_r[20][1]
                 industry = profile_r[16][1]
         except IOError:
             country = "NaN"
@@ -67,7 +73,10 @@ with open("/data/opt/users/destiny/resource/Stock_List.csv") as stocklist:
                 Current_Ratio = float(km_r[27][1])
                 Debt_To_Equity = float(km_r[16][1])
                 Debt_To_Asset = float(km_r[25][1])
-                Dividend_Yield = float(km_r[30][1])
+                if km_r[30][1]=="":
+                    Dividend_Yield = np.NaN
+                else:
+                    Dividend_Yield = float(km_r[30][1])
                 Market_Capital = float(km_r[10][1])
         except IOError:
             Working_Capital = np.NaN
