@@ -29,11 +29,16 @@ with open("/data/opt/users/destiny/resource/Stock_List.csv") as stocklist:
                     country = "NaN"
                 else:
                     country = profile_r[21][1]
+                    
                 if profile_r[20][1]=="":
                     sector="NaN"
                 else:
                     sector = profile_r[20][1]
-                industry = profile_r[16][1]
+                    
+                if profile_r[16][1] == "":
+                    industry = "NaN"
+                else:
+                    industry = profile_r[16][1]
         except IOError:
             country = "NaN"
             industry = "NaN"
@@ -47,10 +52,25 @@ with open("/data/opt/users/destiny/resource/Stock_List.csv") as stocklist:
             filename = "/data/opt/users/destiny/resource/income_statement_annual/"+row[0]+"_IncomeStatement.csv"
             with open(filename) as in_s:
                 in_s_r = [row for row in csv.reader(in_s)]
-                Net_Income_Ratio = float(in_s_r[25][1])
-                Operating_Ratio_Income = float(in_s_r[19][1])
-                Gross_Profit_Ratio = float(in_s_r[7][1])
-                EPS = float(in_s_r[26][1])
+                if in_s_r[25][1] == "":
+                    Net_Income_Ratio = np.NaN
+                else:
+                    Net_Income_Ratio = float(in_s_r[25][1])
+                
+                if in_s_r[19][1]=="":
+                    Operating_Ratio_Income = np.NaN
+                else:
+                    Operating_Ratio_Income = float(in_s_r[19][1])
+                
+                if in_s_r[7][1]=="":
+                    Gross_Profit_Ratio = np.NaN
+                else:
+                    Gross_Profit_Ratio = float(in_s_r[7][1])
+                
+                if in_s_r[26][1] == "":
+                    EPS = np.NaN
+                else:
+                    EPS = float(in_s_r[26][1])
         except IOError:
             Net_Income_Ratio = np.NaN
             Operating_Ratio_Income = np.NaN
@@ -66,13 +86,41 @@ with open("/data/opt/users/destiny/resource/Stock_List.csv") as stocklist:
             with open(filename) as km:
             #with open("C:\\Users\\desti\\Documents\\GitHub\\FYP_JC2007\\Example\\KeyMetric.csv") as km:
                 km_r = [row for row in csv.reader(km)]
-                Working_Capital = float(km_r[43][1])
-                ROE = float(km_r[56][1])
-                PE_Ratio = float(km_r[12][1])
-                PB_Ratio = float(km_r[16][1])
-                Current_Ratio = float(km_r[27][1])
-                Debt_To_Equity = float(km_r[16][1])
-                Debt_To_Asset = float(km_r[25][1])
+                if km_r[43][1] == "":
+                    Working_Capital = np.NaN
+                else:
+                    Working_Capital = float(km_r[43][1])
+                
+                if km_r[56][1] == "":
+                    ROE = np.NaN
+                else:
+                    ROE = float(km_r[56][1])
+                
+                if km_r[12][1] == "":
+                    PE_Ratio = np.NaN
+                else:
+                    PE_Ratio = float(km_r[12][1])
+                
+                if km_r[16][1] == "":
+                    PB_Ratio = np.NaN
+                else:
+                    PB_Ratio = float(km_r[16][1])
+                
+                if km_r[27][1] == "":
+                    Current_Ratio = np.NaN
+                else:
+                    Current_Ratio = float(km_r[27][1])
+                
+                if km_r[24][1] == "":
+                    Debt_To_Equity = np.NaN
+                else:
+                    Debt_To_Equity = float(km_r[24][1])
+                
+                if km_r[25][1] == "":
+                    Debt_To_Asset = np.NaN
+                else:
+                    Debt_To_Asset = float(km_r[25][1])
+                    
                 if km_r[30][1]=="":
                     Dividend_Yield = np.NaN
                 else:
@@ -96,7 +144,7 @@ with open("/data/opt/users/destiny/resource/Stock_List.csv") as stocklist:
         stockname = row[0]
         stockname = pd.DataFrame({"Country":country,"Sector":sector,"Industry":industry,
                                   "Net_Income_Ratio":Net_Income_Ratio,"Operating_Ratio_Income":Operating_Ratio_Income,
-                                  "Gross_Peofit_Ratio":Gross_Profit_Ratio,"EPS":EPS,"Working_Capital":Working_Capital,
+                                  "Gross_Profit_Ratio":Gross_Profit_Ratio,"EPS":EPS,"Working_Capital":Working_Capital,
                                   "ROE":ROE,"PE_Ratio":PE_Ratio,"PB_Ratio":PB_Ratio,"Current_Ratio":Current_Ratio,
                                   "Debt_To_Equity":Debt_To_Equity,"Debt_To_Asset":Debt_To_Asset,
                                   "Dividend_Yield":Dividend_Yield,"Market_Capital":Market_Capital}, index=[stockname])
