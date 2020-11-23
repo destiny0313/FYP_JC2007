@@ -68,6 +68,7 @@ app = JupyterDash(__name__, external_stylesheets=external_stylesheets)
 title_component = html.Div(html.H1("📈 FYP JC2007 Dashboard (2020-2021)", style=title))
 line_graph = dcc.Graph(id='line-graph')
 line_card = dbc.Card(line_graph, style=card)
+something_here = html.Div(html.H1("Here is a test", style=title))
 
 
 
@@ -98,7 +99,7 @@ layout = dbc.Container(
             style=row
         ),        
         dbc.Row(widget_card, style=row),   
-        dbc.Row(line_card, style=row),
+        dbc.Row([dbc.Col(line_card),dbc.Col(something_here)], style=row),
     ],
     style=dashboard,
     fluid = True,
@@ -120,4 +121,4 @@ def update_figure(stocks):
     
     return line_fig
 
-app.run_server( port=8056)
+app.run_server( port=8000)
