@@ -15,13 +15,14 @@ with open("/data/opt/users/destiny/resource/Stock_List.csv") as stocklist:
     
     for row in stocklist_r:
         print(row[0])
+        stockname = row[0]
 
 
         ######################################################  
         #               Fetching from profile                #
         ######################################################
         try:
-            filename = "/data/opt/users/destiny/resource/profile/"+row[0]+"_Profile.csv"
+            filename = "/data/opt/users/destiny/resource/profile/"+stockname+"_Profile.csv"
             with open(filename) as profile:
             #with open("C:\\Users\\desti\\Documents\\GitHub\\FYP_JC2007\\Example\\Profile.csv") as profile:
                 profile_r = {}
@@ -52,7 +53,7 @@ with open("/data/opt/users/destiny/resource/Stock_List.csv") as stocklist:
         #          Fetching from income statement            #
         ######################################################
         try:
-            filename = "/data/opt/users/destiny/resource/income_statement_annual/"+row[0]+"_IncomeStatement.csv"
+            filename = "/data/opt/users/destiny/resource/income_statement_annual/"+stockname+"_IncomeStatement.csv"
             with open(filename) as in_s:
                 in_s_r = {}
                 for row in csv.reader(in_s):
@@ -88,7 +89,7 @@ with open("/data/opt/users/destiny/resource/Stock_List.csv") as stocklist:
         #             Fetching from key metric               #
         ######################################################
         try:
-            filename = "/data/opt/users/destiny/resource/key_metric/"+row[0]+"_KeyMetric.csv"
+            filename = "/data/opt/users/destiny/resource/key_metric/"+stockname+"_KeyMetric.csv"
             with open(filename) as km:
             #with open("C:\\Users\\desti\\Documents\\GitHub\\FYP_JC2007\\Example\\KeyMetric.csv") as km:
                 km_r = {}
@@ -154,7 +155,6 @@ with open("/data/opt/users/destiny/resource/Stock_List.csv") as stocklist:
     ######################################################  
     #              Put data into dataframe               #
     ######################################################
-        stockname = row[0]
         stockname = pd.DataFrame({"Country":country,"Sector":sector,"Industry":industry,
                                   "Net_Income_Ratio":Net_Income_Ratio,"Operating_Ratio_Income":Operating_Ratio_Income,
                                   "Gross_Profit_Ratio":Gross_Profit_Ratio,"EPS":EPS,"Working_Capital":Working_Capital,
