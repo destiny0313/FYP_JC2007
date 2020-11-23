@@ -189,6 +189,20 @@ with open("/data/opt/users/destiny/resource/Stock_List.csv") as stocklist:
         dividend_yield_rank = row[14]
         rank = rank+1
         
+        
+    rank = 1
+    market_capital_rank = "initialize"
+    for i, row in tmp_df.iterrows():
+        if rank == 1:
+            tmp_df.at[i,"Market_Capital_Ranking"] = rank
+            
+        elif row[15] == market_capital_rank or math.isnan(market_capital_rank):
+            rank = rank-1
+            tmp_df.at[i,"Market_Capital_Ranking"] = rank
+        tmp_df.at[i,"Market_Capital_Ranking"] = rank
+        market_capital_rank = row[15]
+        rank = rank+1
+        
     print(tmp_df)
         
         
