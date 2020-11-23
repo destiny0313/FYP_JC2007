@@ -327,13 +327,30 @@ with open("/data/opt/users/destiny/resource/Stock_List.csv") as stocklist:
         if rank == 1:
             tmp_df.at[i,"Working_Capital_Ranking"] = rank
             
-        elif row[8] == Working_Capital_rank or math.isnan(Working_Capital_rank):
+        elif row[7] == Working_Capital_rank or math.isnan(Working_Capital_rank):
             rank = rank-1
             tmp_df.at[i,"Working_Capital_Ranking"] = rank
         tmp_df.at[i,"Working_Capital_Ranking"] = rank
-        Working_Capital_rank = row[8]
+        Working_Capital_rank = row[7]
         rank = rank+1
         
+        
+    ######################################################  
+    #                        EPS                         #
+    ######################################################   
+    tmp_df = tmp_df.sort_values(by="EPS", na_position="last", ascending=False)
+    rank = 1
+    EPS_rank = "initialize"
+    for i, row in tmp_df.iterrows():
+        if rank == 1:
+            tmp_df.at[i,"EPS_Ranking"] = rank
+            
+        elif row[6] == EPS_rank or math.isnan(EPS_rank):
+            rank = rank-1
+            tmp_df.at[i,"EPS_Ranking"] = rank
+        tmp_df.at[i,"EPS_Ranking"] = rank
+        EPS_rank = row[6]
+        rank = rank+1
     print(tmp_df)
         
         
