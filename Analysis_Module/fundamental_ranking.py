@@ -178,7 +178,7 @@ with open("/data/opt/users/destiny/resource/Stock_List.csv") as stocklist:
     rank = 1
     dividend_yield_rank = "initialize"
     for i, row in tmp_df.iterrows():
-        if row[27] == dividend_yield_rank or dividend_yield_rank == [np.nan]:
+        if row[27] == dividend_yield_rank or np.isnan(dividend_yield_rank):
             rank = rank-1
             tmp_df.at[i,"Dividend_Yield_Ranking"] = rank
         tmp_df.at[i,"Dividend_Yield_Ranking"] = rank
