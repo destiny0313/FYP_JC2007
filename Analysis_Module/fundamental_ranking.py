@@ -351,6 +351,26 @@ with open("/data/opt/users/destiny/resource/Stock_List.csv") as stocklist:
         tmp_df.at[i,"EPS_Ranking"] = rank
         EPS_rank = row[6]
         rank = rank+1
+        
+        
+    ######################################################  
+    #                Gross Profit Ratio                  #
+    ######################################################   
+    tmp_df = tmp_df.sort_values(by="Gross_Profit_Ratio", na_position="last", ascending=False)
+    rank = 1
+    Gross_Profit_Ratio_rank = "initialize"
+    for i, row in tmp_df.iterrows():
+        if rank == 1:
+            tmp_df.at[i,"Gross_Profit_Ratio_Ranking"] = rank
+            
+        elif row[5] == Gross_Profit_Ratio_rank or math.isnan(Gross_Profit_Ratio_rank):
+            rank = rank-1
+            tmp_df.at[i,"Gross_Profit_Ratio_Ranking"] = rank
+        tmp_df.at[i,"Gross_Profit_Ratio_Ranking"] = rank
+        Gross_Profit_Ratio_rank = row[5]
+        rank = rank+1
+        
+        
     print(tmp_df)
         
         
