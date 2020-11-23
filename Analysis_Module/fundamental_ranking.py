@@ -280,6 +280,25 @@ with open("/data/opt/users/destiny/resource/Stock_List.csv") as stocklist:
         PB_Ratio_rank = row[10]
         rank = rank+1
         
+        
+    ######################################################  
+    #                     P/E Ratio                      #
+    ######################################################   
+    tmp_df = tmp_df.sort_values(by="PE_Ratio", na_position="last", ascending=True)
+    rank = 1
+    PE_Ratio_rank = "initialize"
+    for i, row in tmp_df.iterrows():
+        if rank == 1:
+            tmp_df.at[i,"PE_Ratio_Ranking"] = rank
+            
+        elif row[9] == PE_Ratio_rank or math.isnan(PE_Ratio_rank):
+            rank = rank-1
+            tmp_df.at[i,"PE_Ratio_Ranking"] = rank
+        tmp_df.at[i,"PE_Ratio_Ranking"] = rank
+        PE_Ratio_rank = row[9]
+        rank = rank+1
+        
+        
     print(tmp_df)
         
         
