@@ -169,6 +169,46 @@ with open("/data/opt/users/destiny/resource/Stock_List.csv") as stocklist:
 
         tmp_df = tmp_df.append(stockname)
     
-    df_a = tmp_df.sort_values(by="Dividend_Yield", na_position="last", ascending=True)
-    list_a = list(df_a.index.values)
-    print(df_a)
+    tmp_df = tmp_df.sort_values(by="Dividend_Yield", na_position="last", ascending=True)
+    
+    
+    ######################################################  
+    #          Rank each attributes of the df            #
+    ######################################################
+    rank = 2
+    dividend_yield_rank = "initialize"
+    for i, row in tmp_df.iterrows():
+        if row[27] == dividend_yield_rank:
+            rank = rank-1
+            tmp_df.at[i,"Dividend_Yield_Ranking"] = rank
+        tmp_df.at[i,"Dividend_Yield_Ranking"] = rank
+        rank = rank+1
+        
+    print(tmp_df)
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
