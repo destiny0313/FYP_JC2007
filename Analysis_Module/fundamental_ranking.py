@@ -248,7 +248,7 @@ with open("/data/opt/users/destiny/resource/Stock_List.csv") as stocklist:
     ######################################################  
     #                   Current Ratio                    #
     ######################################################   
-    tmp_df = tmp_df.sort_values(by="Current_Ratio", na_position="last", ascending=True)
+    tmp_df = tmp_df.sort_values(by="Current_Ratio", na_position="last", ascending=False)
     rank = 1
     Current_Ratio_rank = "initialize"
     for i, row in tmp_df.iterrows():
@@ -260,6 +260,24 @@ with open("/data/opt/users/destiny/resource/Stock_List.csv") as stocklist:
             tmp_df.at[i,"Current_Ratio_Ranking"] = rank
         tmp_df.at[i,"Current_Ratio_Ranking"] = rank
         Current_Ratio_rank = row[11]
+        rank = rank+1
+        
+        
+    ######################################################  
+    #                     P/B Ratio                      #
+    ######################################################   
+    tmp_df = tmp_df.sort_values(by="PB_Ratio", na_position="last", ascending=True)
+    rank = 1
+    PB_Ratio_rank = "initialize"
+    for i, row in tmp_df.iterrows():
+        if rank == 1:
+            tmp_df.at[i,"PB_Ratio_Ranking"] = rank
+            
+        elif row[10] == PB_Ratio_rank or math.isnan(PB_Ratio_rank):
+            rank = rank-1
+            tmp_df.at[i,"PB_Ratio_Ranking"] = rank
+        tmp_df.at[i,"PB_Ratio_Ranking"] = rank
+        PB_Ratio_rank = row[10]
         rank = rank+1
         
     print(tmp_df)
