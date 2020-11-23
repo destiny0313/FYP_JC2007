@@ -164,6 +164,6 @@ with open("/data/opt/users/destiny/resource/Stock_List.csv") as stocklist:
 
         tmp_df = tmp_df.append(stockname)
     
-    df_a = tmp_df.sort_values(Working_Capital, na_position="last", ascending=True)
+    df_a = tmp_df.sort_values(by="Working_Capital", na_position="last", ascending=True)
     list_a = list(df_a.index.values)
     print(list_a)
