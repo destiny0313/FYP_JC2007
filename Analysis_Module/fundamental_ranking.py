@@ -1,6 +1,7 @@
 import pandas as pd
 import csv
 import numpy as np
+import math
 
 
 tmp_df = pd.DataFrame(columns=["Country","Sector","Industry","Net_Income_Ratio","Operating_Ratio_Income",
@@ -178,7 +179,7 @@ with open("/data/opt/users/destiny/resource/Stock_List.csv") as stocklist:
     rank = 1
     dividend_yield_rank = "initialize"
     for i, row in tmp_df.iterrows():
-        if row[27] == dividend_yield_rank or np.isnan(dividend_yield_rank):
+        if row[27] == dividend_yield_rank or math.isnan(dividend_yield_rank):
             rank = rank-1
             tmp_df.at[i,"Dividend_Yield_Ranking"] = rank
         tmp_df.at[i,"Dividend_Yield_Ranking"] = rank
