@@ -299,6 +299,24 @@ with open("/data/opt/users/destiny/resource/Stock_List.csv") as stocklist:
         rank = rank+1
         
         
+    ######################################################  
+    #                     ROE Ratio                      #
+    ######################################################   
+    tmp_df = tmp_df.sort_values(by="ROE", na_position="last", ascending=False)
+    rank = 1
+    ROE_rank = "initialize"
+    for i, row in tmp_df.iterrows():
+        if rank == 1:
+            tmp_df.at[i,"ROE_Ranking"] = rank
+            
+        elif row[8] == ROE_rank or math.isnan(ROE_rank):
+            rank = rank-1
+            tmp_df.at[i,"ROE_Ranking"] = rank
+        tmp_df.at[i,"ROE_Ranking"] = rank
+        ROE_rank = row[8]
+        rank = rank+1
+        
+        
     print(tmp_df)
         
         
