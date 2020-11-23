@@ -59,29 +59,29 @@ with open("/data/opt/users/destiny/resource/Stock_List.csv") as stocklist:
                     in_s_r[row[0]] = row
                     
                 if in_s_r.get("netIncomeRatio")[1] == "":
-                    Net_Income_Ratio = np.NaN
+                    Net_Income_Ratio = np.nan
                 else:
                     Net_Income_Ratio = float(in_s_r.get("netIncomeRatio")[1])
                 
                 if in_s_r.get("operatingIncomeRatio")[1] == "":
-                    Operating_Ratio_Income = np.NaN
+                    Operating_Ratio_Income = np.nan
                 else:
                     Operating_Ratio_Income = float(in_s_r.get("operatingIncomeRatio")[1])
                 
                 if in_s_r.get("grossProfitRatio")[1] =="":
-                    Gross_Profit_Ratio = np.NaN
+                    Gross_Profit_Ratio = np.nan
                 else:
                     Gross_Profit_Ratio = float(in_s_r.get("grossProfitRatio")[1])
                 
                 if in_s_r.get("eps")[1] == "":
-                    EPS = np.NaN
+                    EPS = np.nan
                 else:
                     EPS = float(in_s_r.get("eps")[1])
         except IOError:
-            Net_Income_Ratio = np.NaN
-            Operating_Ratio_Income = np.NaN
-            Gross_Profit_Ratio = np.NaN
-            EPS = np.NaN
+            Net_Income_Ratio = np.nan
+            Operating_Ratio_Income = np.nan
+            Gross_Profit_Ratio = np.nan
+            EPS = np.nan
         
         
         ######################################################  
@@ -96,59 +96,59 @@ with open("/data/opt/users/destiny/resource/Stock_List.csv") as stocklist:
                     km_r[row[0]] = row
                     
                 if km_r.get("workingCapital")[1] == "":
-                    Working_Capital = np.NaN
+                    Working_Capital = np.nan
                 else:
                     Working_Capital = float(km_r.get("workingCapital")[1])
                 
                 if km_r.get("roe")[1] == "":
-                    ROE = np.NaN
+                    ROE = np.nan
                 else:
                     ROE = float(km_r.get("roe")[1])
                 
                 if km_r.get("peRatio")[1] == "":
-                    PE_Ratio = np.NaN
+                    PE_Ratio = np.nan
                 else:
                     PE_Ratio = float(km_r.get("peRatio")[1])
                 
                 if km_r.get("pbRatio")[1] == "":
-                    PB_Ratio = np.NaN
+                    PB_Ratio = np.nan
                 else:
                     PB_Ratio = float(km_r.get("pbRatio")[1])
                 
                 if km_r.get("currentRatio")[1] == "":
-                    Current_Ratio = np.NaN
+                    Current_Ratio = np.nan
                 else:
                     Current_Ratio = float(km_r.get("currentRatio")[1])
                 
                 if km_r.get("debtToEquity")[1] == "":
-                    Debt_To_Equity = np.NaN
+                    Debt_To_Equity = np.nan
                 else:
                     Debt_To_Equity = float(km_r.get("debtToEquity")[1])
                 
                 if km_r.get("debtToAssets")[1] == "":
-                    Debt_To_Asset = np.NaN
+                    Debt_To_Asset = np.nan
                 else:
                     Debt_To_Asset = float(km_r.get("debtToAssets")[1])
                     
                 if km_r.get("dividendYield")[1] =="":
-                    Dividend_Yield = np.NaN
+                    Dividend_Yield = np.nan
                 else:
                     Dividend_Yield = float(km_r.get("dividendYield")[1])
                     
                 if km_r.get("marketCap")[1] == "":
-                    Market_Capital = np.NaN
+                    Market_Capital = np.nan
                 else:
                     Market_Capital = float(km_r.get("marketCap")[1])
         except IOError:
-            Working_Capital = np.NaN
-            ROE = np.NaN
-            PE_Ratio = np.NaN
-            PB_Ratio = np.NaN
-            Current_Ratio = np.NaN
-            Debt_To_Equity = np.NaN
-            Debt_To_Asset = np.NaN
-            Dividend_Yield = np.NaN
-            Market_Capital = np.NaN
+            Working_Capital = np.nan
+            ROE = np.nan
+            PE_Ratio = np.nan
+            PB_Ratio = np.nan
+            Current_Ratio = np.nan
+            Debt_To_Equity = np.nan
+            Debt_To_Asset = np.nan
+            Dividend_Yield = np.nan
+            Market_Capital = np.nan
         
 
     ######################################################  
