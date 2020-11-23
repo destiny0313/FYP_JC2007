@@ -407,6 +407,7 @@ with open("/data/opt/users/destiny/resource/Stock_List.csv") as stocklist:
         rank = rank+1   
         
     print(tmp_df)
+    tmp_df.to_csv("/home/destiny/fyp/FYP_JC2007/Source/attribute_ranking.csv")
         
         
         
