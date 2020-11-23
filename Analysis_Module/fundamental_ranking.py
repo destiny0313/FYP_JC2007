@@ -4,12 +4,12 @@ import numpy as np
 import math
 
 
-tmp_df = pd.DataFrame(columns=["Country","Sector","Industry","Net_Income_Ratio","Operating_Ratio_Income",
+tmp_df = pd.DataFrame(columns=["Country","Sector","Industry","Net_Income_Ratio","Operating_Income_Ratio",
                                "Gross_Profit_Ratio","EPS","Working_Capital","ROE",
                                "PE_Ratio","PB_Ratio","Current_Ratio","Debt_To_Equity","Debt_To_Asset",
                                "Dividend_Yield","Market_Capital",
                                
-                               "Net_Income_Ratio_Ranking","Operating_Ratio_Income_Ranking",
+                               "Net_Income_Ratio_Ranking","Operating_Income_Ratio_Ranking",
                                "Gross_Profit_Ratio_Ranking","EPS_Ranking","Working_Capital_Ranking","ROE_Ranking",
                                "PE_Ratio_Ranking","PB_Ratio_Ranking","Current_Ratio_Ranking","Debt_To_Equity_Ranking","Debt_To_Asset_Ranking",
                                "Dividend_Yield_Ranking","Market_Capital_Ranking"])
@@ -71,9 +71,9 @@ with open("/data/opt/users/destiny/resource/Stock_List.csv") as stocklist:
                     Net_Income_Ratio = float(in_s_r.get("netIncomeRatio")[1])
                 
                 if in_s_r.get("operatingIncomeRatio")[1] == "":
-                    Operating_Ratio_Income = np.nan
+                    Operating_Income_Ratio = np.nan
                 else:
-                    Operating_Ratio_Income = float(in_s_r.get("operatingIncomeRatio")[1])
+                    Operating_Income_Ratio = float(in_s_r.get("operatingIncomeRatio")[1])
                 
                 if in_s_r.get("grossProfitRatio")[1] =="":
                     Gross_Profit_Ratio = np.nan
@@ -86,7 +86,7 @@ with open("/data/opt/users/destiny/resource/Stock_List.csv") as stocklist:
                     EPS = float(in_s_r.get("eps")[1])
         except IOError:
             Net_Income_Ratio = np.nan
-            Operating_Ratio_Income = np.nan
+            Operating_Income_Ratio = np.nan
             Gross_Profit_Ratio = np.nan
             EPS = np.nan
         
@@ -162,7 +162,7 @@ with open("/data/opt/users/destiny/resource/Stock_List.csv") as stocklist:
     #              Put data into dataframe               #
     ######################################################
         stockname = pd.DataFrame({"Country":country,"Sector":sector,"Industry":industry,
-                                  "Net_Income_Ratio":Net_Income_Ratio,"Operating_Ratio_Income":Operating_Ratio_Income,
+                                  "Net_Income_Ratio":Net_Income_Ratio,"Operating_Income_Ratio":Operating_Income_Ratio,
                                   "Gross_Profit_Ratio":Gross_Profit_Ratio,"EPS":EPS,"Working_Capital":Working_Capital,
                                   "ROE":ROE,"PE_Ratio":PE_Ratio,"PB_Ratio":PB_Ratio,"Current_Ratio":Current_Ratio,
                                   "Debt_To_Equity":Debt_To_Equity,"Debt_To_Asset":Debt_To_Asset,
@@ -370,6 +370,41 @@ with open("/data/opt/users/destiny/resource/Stock_List.csv") as stocklist:
         Gross_Profit_Ratio_rank = row[5]
         rank = rank+1
         
+        
+    ######################################################  
+    #              Operating Income Ratio                #
+    ######################################################   
+    tmp_df = tmp_df.sort_values(by="Operating_Income_Ratio", na_position="last", ascending=False)
+    rank = 1
+    Operating_Income_Ratio_rank = "initialize"
+    for i, row in tmp_df.iterrows():
+        if rank == 1:
+            tmp_df.at[i,"Operating_Income_Ratio_Ranking"] = rank
+            
+        elif row[4] == Operating_Income_Ratio_rank or math.isnan(Operating_Income_Ratio_rank):
+            rank = rank-1
+            tmp_df.at[i,"Operating_Income_Ratio_Ranking"] = rank
+        tmp_df.at[i,"Operating_Income_Ratio_Ranking"] = rank
+        Operating_Income_Ratio_rank = row[4]
+        rank = rank+1    
+        
+        
+    ######################################################  
+    #                 Net Income Ratio                   #
+    ######################################################   
+    tmp_df = tmp_df.sort_values(by="Net_Income_Ratio", na_position="last", ascending=False)
+    rank = 1
+    Net_Income_Ratio_rank = "initialize"
+    for i, row in tmp_df.iterrows():
+        if rank == 1:
+            tmp_df.at[i,"Net_Income_Ratio_Ranking"] = rank
+            
+        elif row[3] == Net_Income_Ratio_rank or math.isnan(Net_Income_Ratio_rank):
+            rank = rank-1
+            tmp_df.at[i,"Net_Income_Ratio_Ranking"] = rank
+        tmp_df.at[i,"Net_Income_Ratio_Ranking"] = rank
+        Net_Income_Ratio_rank = row[3]
+        rank = rank+1   
         
     print(tmp_df)
         
