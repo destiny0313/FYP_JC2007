@@ -226,6 +226,24 @@ with open("/data/opt/users/destiny/resource/Stock_List.csv") as stocklist:
         Debt_To_Asset_rank = row[13]
         rank = rank+1
         
+        
+    ######################################################  
+    #                   Debt To Equity                    #
+    ######################################################   
+    tmp_df = tmp_df.sort_values(by="Debt_To_Equity", na_position="last", ascending=True)
+    rank = 1
+    Debt_To_Equity_rank = "initialize"
+    for i, row in tmp_df.iterrows():
+        if rank == 1:
+            tmp_df.at[i,"Debt_To_Equity_Ranking"] = rank
+            
+        elif row[12] == Debt_To_Equity_rank or math.isnan(Debt_To_Equity_rank):
+            rank = rank-1
+            tmp_df.at[i,"Debt_To_Equity_Ranking"] = rank
+        tmp_df.at[i,"Debt_To_Equity_Ranking"] = rank
+        Debt_To_Equity_rank = row[12]
+        rank = rank+1
+        
     print(tmp_df)
         
         
