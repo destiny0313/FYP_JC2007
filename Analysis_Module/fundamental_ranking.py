@@ -244,6 +244,24 @@ with open("/data/opt/users/destiny/resource/Stock_List.csv") as stocklist:
         Debt_To_Equity_rank = row[12]
         rank = rank+1
         
+        
+    ######################################################  
+    #                   Current Ratio                    #
+    ######################################################   
+    tmp_df = tmp_df.sort_values(by="Current_Ratio", na_position="last", ascending=True)
+    rank = 1
+    Current_Ratio_rank = "initialize"
+    for i, row in tmp_df.iterrows():
+        if rank == 1:
+            tmp_df.at[i,"Current_Ratio_Ranking"] = rank
+            
+        elif row[11] == Current_Ratio_rank or math.isnan(Current_Ratio_rank):
+            rank = rank-1
+            tmp_df.at[i,"Current_Ratio_Ranking"] = rank
+        tmp_df.at[i,"Current_Ratio_Ranking"] = rank
+        Current_Ratio_rank = row[11]
+        rank = rank+1
+        
     print(tmp_df)
         
         
