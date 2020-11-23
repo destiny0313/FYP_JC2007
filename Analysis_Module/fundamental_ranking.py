@@ -6,7 +6,12 @@ import numpy as np
 tmp_df = pd.DataFrame(columns=["Country","Sector","Industry","Net_Income_Ratio","Operating_Ratio_Income",
                                "Gross_Profit_Ratio","EPS","Working_Capital","ROE",
                                "PE_Ratio","PB_Ratio","Current_Ratio","Debt_To_Equity","Debt_To_Asset",
-                               "Dividend_Yield","Market_Capital"])
+                               "Dividend_Yield","Market_Capital",
+                               
+                               "Net_Income_Ratio_Ranking","Operating_Ratio_Income_Ranking",
+                               "Gross_Profit_Ratio_Ranking","EPS_Ranking","Working_Capital_Ranking","ROE_Ranking",
+                               "PE_Ratio_Ranking","PB_Ratio_Ranking","Current_Ratio_Ranking","Debt_To_Equity_Ranking","Debt_To_Asset_Ranking",
+                               "Dividend_Yield_Ranking","Market_Capital_Ranking"])
 
 with open("/data/opt/users/destiny/resource/Stock_List.csv") as stocklist:
 #with open("C:\\Users\\desti\\Documents\\GitHub\\FYP_JC2007\\Source\\Stock_List.csv") as stocklist:
