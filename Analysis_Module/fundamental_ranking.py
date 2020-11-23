@@ -24,21 +24,24 @@ with open("/data/opt/users/destiny/resource/Stock_List.csv") as stocklist:
             filename = "/data/opt/users/destiny/resource/profile/"+row[0]+"_Profile.csv"
             with open(filename) as profile:
             #with open("C:\\Users\\desti\\Documents\\GitHub\\FYP_JC2007\\Example\\Profile.csv") as profile:
-                profile_r = [row for row in csv.reader(profile)]
-                if profile_r[21][1]=="":
+                profile_r = {}
+                for row in csv.reader(profile):
+                    profile_r[row[0]] = row
+                    
+                if profile_r.get("country")[1] =="":
                     country = "NaN"
                 else:
-                    country = profile_r[21][1]
+                    country = profile_r.get("country")[1]
                     
-                if profile_r[20][1]=="":
+                if profile_r.get("sector")[1]=="":
                     sector="NaN"
                 else:
-                    sector = profile_r[20][1]
+                    sector = profile_r.get("sector")[1]
                     
-                if profile_r[16][1] == "":
+                if profile_r.get("industry")[1] == "":
                     industry = "NaN"
                 else:
-                    industry = profile_r[16][1]
+                    industry = profile_r.get("industry")[1]
         except IOError:
             country = "NaN"
             industry = "NaN"
@@ -51,26 +54,29 @@ with open("/data/opt/users/destiny/resource/Stock_List.csv") as stocklist:
         try:
             filename = "/data/opt/users/destiny/resource/income_statement_annual/"+row[0]+"_IncomeStatement.csv"
             with open(filename) as in_s:
-                in_s_r = [row for row in csv.reader(in_s)]
-                if in_s_r[25][1] == "":
+                in_s_r = {}
+                for row in csv.reader(in_s):
+                    in_s_r[row[0]] = row
+                    
+                if in_s_r.get("netIncomeRatio")[1] == "":
                     Net_Income_Ratio = np.NaN
                 else:
-                    Net_Income_Ratio = float(in_s_r[25][1])
+                    Net_Income_Ratio = float(in_s_r.get("netIncomeRatio")[1])
                 
-                if in_s_r[19][1]=="":
+                if in_s_r.get("operatingIncomeRatio")[1] == "":
                     Operating_Ratio_Income = np.NaN
                 else:
-                    Operating_Ratio_Income = float(in_s_r[19][1])
+                    Operating_Ratio_Income = float(in_s_r.get("operatingIncomeRatio")[1])
                 
-                if in_s_r[7][1]=="":
+                if in_s_r.get("grossProfitRatio")[1] =="":
                     Gross_Profit_Ratio = np.NaN
                 else:
-                    Gross_Profit_Ratio = float(in_s_r[7][1])
+                    Gross_Profit_Ratio = float(in_s_r.get("grossProfitRatio")[1])
                 
-                if in_s_r[26][1] == "":
+                if in_s_r.get("eps")[1] == "":
                     EPS = np.NaN
                 else:
-                    EPS = float(in_s_r[26][1])
+                    EPS = float(in_s_r.get("eps")[1])
         except IOError:
             Net_Income_Ratio = np.NaN
             Operating_Ratio_Income = np.NaN
@@ -85,51 +91,54 @@ with open("/data/opt/users/destiny/resource/Stock_List.csv") as stocklist:
             filename = "/data/opt/users/destiny/resource/key_metric/"+row[0]+"_KeyMetric.csv"
             with open(filename) as km:
             #with open("C:\\Users\\desti\\Documents\\GitHub\\FYP_JC2007\\Example\\KeyMetric.csv") as km:
-                km_r = [row for row in csv.reader(km)]
-                if km_r[43][1] == "":
+                km_r = {}
+                for row in csv.reader(km):
+                    km_r[row[0]] = row
+                    
+                if km_r.get("workingCapital")[1] == "":
                     Working_Capital = np.NaN
                 else:
-                    Working_Capital = float(km_r[43][1])
+                    Working_Capital = float(km_r.get("workingCapital")[1])
                 
-                if km_r[56][1] == "":
+                if km_r.get("roe")[1] == "":
                     ROE = np.NaN
                 else:
-                    ROE = float(km_r[56][1])
+                    ROE = float(km_r.get("roe")[1])
                 
-                if km_r[12][1] == "":
+                if km_r.get("peRatio")[1] == "":
                     PE_Ratio = np.NaN
                 else:
-                    PE_Ratio = float(km_r[12][1])
+                    PE_Ratio = float(km_r.get("peRatio")[1])
                 
-                if km_r[16][1] == "":
+                if km_r.get("pbRatio")[1] == "":
                     PB_Ratio = np.NaN
                 else:
-                    PB_Ratio = float(km_r[16][1])
+                    PB_Ratio = float(km_r.get("pbRatio")[1])
                 
-                if km_r[27][1] == "":
+                if km_r.get("currentRatio")[1] == "":
                     Current_Ratio = np.NaN
                 else:
-                    Current_Ratio = float(km_r[27][1])
+                    Current_Ratio = float(km_r.get("currentRatio")[1])
                 
-                if km_r[24][1] == "":
+                if km_r.get("debtToEquity")[1] == "":
                     Debt_To_Equity = np.NaN
                 else:
-                    Debt_To_Equity = float(km_r[24][1])
+                    Debt_To_Equity = float(km_r.get("debtToEquity")[1])
                 
-                if km_r[25][1] == "":
+                if km_r.get("debtToAssets")[1] == "":
                     Debt_To_Asset = np.NaN
                 else:
-                    Debt_To_Asset = float(km_r[25][1])
+                    Debt_To_Asset = float(km_r.get("debtToAssets")[1])
                     
-                if km_r[30][1]=="":
+                if km_r.get("dividendYield")[1] =="":
                     Dividend_Yield = np.NaN
                 else:
-                    Dividend_Yield = float(km_r[30][1])
+                    Dividend_Yield = float(km_r.get("dividendYield")[1])
                     
-                if km_r[10][1] == "":
+                if km_r.get("marketCap")[1] == "":
                     Market_Capital = np.NaN
                 else:
-                    Market_Capital = float(km_r[10][1])
+                    Market_Capital = float(km_r.get("marketCap")[1])
         except IOError:
             Working_Capital = np.NaN
             ROE = np.NaN
