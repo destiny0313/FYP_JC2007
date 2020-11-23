@@ -317,6 +317,23 @@ with open("/data/opt/users/destiny/resource/Stock_List.csv") as stocklist:
         rank = rank+1
         
         
+    ######################################################  
+    #                  Working Capital                   #
+    ######################################################   
+    tmp_df = tmp_df.sort_values(by="Working_Capital", na_position="last", ascending=False)
+    rank = 1
+    Working_Capital_rank = "initialize"
+    for i, row in tmp_df.iterrows():
+        if rank == 1:
+            tmp_df.at[i,"Working_Capital_Ranking"] = rank
+            
+        elif row[8] == Working_Capital_rank or math.isnan(Working_Capital_rank):
+            rank = rank-1
+            tmp_df.at[i,"Working_Capital_Ranking"] = rank
+        tmp_df.at[i,"Working_Capital_Ranking"] = rank
+        Working_Capital_rank = row[8]
+        rank = rank+1
+        
     print(tmp_df)
         
         
