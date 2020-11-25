@@ -67,7 +67,7 @@ dashboard = {
     'color': 'white'
 }
 col = {
-       'width' : '50%'
+       'width' : '33%'
 }
 
 
@@ -132,6 +132,63 @@ stockSlider6 = dcc.Slider(
     value = 0.5,
     marks = {0:"0.0",0.1:"0.1",0.2:"0.2",0.3:"0.3",0.4:"0.4",0.5:"0.5",0.6:"0.6",0.7:"0.7",0.8:"0.8",0.9:"0.9",1:"1.0"}
     )
+stockSlider7 = dcc.Slider(
+    id='stock-slider-PE',
+    min = 0,
+    max = 1,
+    step = 0.1,
+    value = 0.5,
+    marks = {0:"0.0",0.1:"0.1",0.2:"0.2",0.3:"0.3",0.4:"0.4",0.5:"0.5",0.6:"0.6",0.7:"0.7",0.8:"0.8",0.9:"0.9",1:"1.0"}
+    )
+stockSlider8 = dcc.Slider(
+    id='stock-slider-PB',
+    min = 0,
+    max = 1,
+    step = 0.1,
+    value = 0.5,
+    marks = {0:"0.0",0.1:"0.1",0.2:"0.2",0.3:"0.3",0.4:"0.4",0.5:"0.5",0.6:"0.6",0.7:"0.7",0.8:"0.8",0.9:"0.9",1:"1.0"}
+    )
+stockSlider9 = dcc.Slider(
+    id='stock-slider-Current-Ratio',
+    min = 0,
+    max = 1,
+    step = 0.1,
+    value = 0.5,
+    marks = {0:"0.0",0.1:"0.1",0.2:"0.2",0.3:"0.3",0.4:"0.4",0.5:"0.5",0.6:"0.6",0.7:"0.7",0.8:"0.8",0.9:"0.9",1:"1.0"}
+    )
+stockSlider10 = dcc.Slider(
+    id='stock-slider-Debt-To-Equity',
+    min = 0,
+    max = 1,
+    step = 0.1,
+    value = 0.5,
+    marks = {0:"0.0",0.1:"0.1",0.2:"0.2",0.3:"0.3",0.4:"0.4",0.5:"0.5",0.6:"0.6",0.7:"0.7",0.8:"0.8",0.9:"0.9",1:"1.0"}
+    )
+stockSlider11 = dcc.Slider(
+    id='stock-slider-Debt-To-Asset',
+    min = 0,
+    max = 1,
+    step = 0.1,
+    value = 0.5,
+    marks = {0:"0.0",0.1:"0.1",0.2:"0.2",0.3:"0.3",0.4:"0.4",0.5:"0.5",0.6:"0.6",0.7:"0.7",0.8:"0.8",0.9:"0.9",1:"1.0"}
+    )
+stockSlider12 = dcc.Slider(
+    id='stock-slider-Dividend-Yield',
+    min = 0,
+    max = 1,
+    step = 0.1,
+    value = 0.5,
+    marks = {0:"0.0",0.1:"0.1",0.2:"0.2",0.3:"0.3",0.4:"0.4",0.5:"0.5",0.6:"0.6",0.7:"0.7",0.8:"0.8",0.9:"0.9",1:"1.0"}
+    )
+stockSlider13 = dcc.Slider(
+    id='stock-slider-Market-Capital',
+    min = 0,
+    max = 1,
+    step = 0.1,
+    value = 0.5,
+    marks = {0:"0.0",0.1:"0.1",0.2:"0.2",0.3:"0.3",0.4:"0.4",0.5:"0.5",0.6:"0.6",0.7:"0.7",0.8:"0.8",0.9:"0.9",1:"1.0"}
+    )
+
 
 stockDropdown = dcc.Dropdown(
     id='stock-dropdown', 
@@ -143,8 +200,12 @@ stockDropdown = dcc.Dropdown(
 
 slider_card = dbc.Card([dbc.Row([dbc.Col([html.P("Net Income Ratio:"), html.Div(stockSlider)],style=col), 
                                  dbc.Col([html.P("Operating Income Ratio:"), html.Div(stockSlider2)],style=col)]),
-                        dbc.Row([dbc.Col([html.P("Gross Profit Ratio:"), html.Div(stockSlider3)]), dbc.Col([html.P("EPS"), html.Div(stockSlider4)])]),
-                        dbc.Row([dbc.Col([html.P("Working Capital"), html.Div(stockSlider5)],style=col), dbc.Col([html.P("ROE:"), html.Div(stockSlider6)],style=col)])], style=card)
+                        dbc.Row([dbc.Col([html.P("Gross Profit Ratio:"), html.Div(stockSlider3)],style=col), dbc.Col([html.P("EPS"), html.Div(stockSlider4)],style=col)]),
+                        dbc.Row([dbc.Col([html.P("Working Capital:"), html.Div(stockSlider5)],style=col), dbc.Col([html.P("ROE:"), html.Div(stockSlider6)],style=col)]),
+                        dbc.Row([dbc.Col([html.P("P/E Ratio:"), html.Div(stockSlider7)],style=col), dbc.Col([html.P("P/B Ratio:"), html.Div(stockSlider8)],style=col)]),
+                        dbc.Row([dbc.Col([html.P("Current Ratio:"), html.Div(stockSlider9)],style=col), dbc.Col([html.P("Debt-To-Equity:"), html.Div(stockSlider10)],style=col)]),
+                        dbc.Row([dbc.Col([html.P("Debt-To-Assets:"), html.Div(stockSlider11)],style=col), dbc.Col([html.P("Dividend Yield:"), html.Div(stockSlider12)],style=col)]),
+                        dbc.Row([dbc.Col([html.P("Market Capital:"), html.Div(stockSlider13)],style=col), dbc.Col([], style=col)])],style=card)
 
 widget_card = dbc.Card([
                     html.Div(stockDropdown)
@@ -187,5 +248,14 @@ def update_figure(stocks):
     line_fig.update_layout()
     
     return line_fig
+
+@app.callback(
+    Output('a'),
+    [
+     Input('stock-slider-EPS','value'),
+     Input('','value')]
+    )
+def test(hi):
+    return 1
 
 app.run_server( port=8000)
