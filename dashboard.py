@@ -1,7 +1,13 @@
 # -*- coding: utf-8 -*-
 """
-Created on Wed Oct 28 20:35:43 2020
+Created on Wed Nov 25 16:49:05 2020
 
+@author: User
+"""
+
+# -*- coding: utf-8 -*-
+"""
+Created on Wed Oct 28 20:35:43 2020
 @author: user
 """
 
@@ -44,7 +50,7 @@ card = {
     "padding": "5px"
 }
 row = {
-    'margin-bottom':'2em'
+    'margin-bottom':'2em',
 }
 cell = {
     "padding": "5px",
@@ -60,6 +66,9 @@ dashboard = {
     'padding': '2em 8em 2em 8em', 
     'color': 'white'
 }
+col = {
+       'width' : '50%'
+}
 
 
 external_stylesheets = ["https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600;700&family=Poppins:wght@400;500;700&display=swap", dbc.themes.BOOTSTRAP]
@@ -70,7 +79,59 @@ line_graph = dcc.Graph(id='line-graph')
 line_card = dbc.Card(line_graph, style=card)
 something_here = html.Div(html.H1("Here is a test", style=title))
 
+stockSlider = dcc.Slider(
+    id='stock-slider-Net-Income-Ratio',
+    min = 0,
+    max = 1,
+    step = 0.1,
+    value = 0.5,
+    marks = {0:"0.0",0.1:"0.1",0.2:"0.2",0.3:"0.3",0.4:"0.4",0.5:"0.5",0.6:"0.6",0.7:"0.7",0.8:"0.8",0.9:"0.9",1:"1.0"}
+    )
 
+stockSlider2 = dcc.Slider(
+    id='stock-slider-Operating-Income-Ratio',
+    min = 0,
+    max = 1,
+    step = 0.1,
+    value = 0.5,
+    marks = {0:"0.0",0.1:"0.1",0.2:"0.2",0.3:"0.3",0.4:"0.4",0.5:"0.5",0.6:"0.6",0.7:"0.7",0.8:"0.8",0.9:"0.9",1:"1.0"}
+    )
+
+stockSlider3 = dcc.Slider(
+    id='stock-slider-PE-Ratio',
+    min = 0,
+    max = 1,
+    step = 0.1,
+    value = 0.5,
+    marks = {0:"0.0",0.1:"0.1",0.2:"0.2",0.3:"0.3",0.4:"0.4",0.5:"0.5",0.6:"0.6",0.7:"0.7",0.8:"0.8",0.9:"0.9",1:"1.0"}
+    )
+
+stockSlider4 = dcc.Slider(
+    id='stock-slider-EPS',
+    min = 0,
+    max = 1,
+    step = 0.1,
+    value = 0.5,
+    marks = {0:"0.0",0.1:"0.1",0.2:"0.2",0.3:"0.3",0.4:"0.4",0.5:"0.5",0.6:"0.6",0.7:"0.7",0.8:"0.8",0.9:"0.9",1:"1.0"}
+    )
+
+stockSlider5 = dcc.Slider(
+    id='stock-slider-Working-Capital',
+    min = 0,
+    max = 1,
+    step = 0.1,
+    value = 0.5,
+    marks = {0:"0.0",0.1:"0.1",0.2:"0.2",0.3:"0.3",0.4:"0.4",0.5:"0.5",0.6:"0.6",0.7:"0.7",0.8:"0.8",0.9:"0.9",1:"1.0"}
+    )
+
+stockSlider6 = dcc.Slider(
+    id='stock-slider-ROE',
+    min = 0,
+    max = 1,
+    step = 0.1,
+    value = 0.5,
+    marks = {0:"0.0",0.1:"0.1",0.2:"0.2",0.3:"0.3",0.4:"0.4",0.5:"0.5",0.6:"0.6",0.7:"0.7",0.8:"0.8",0.9:"0.9",1:"1.0"}
+    )
 
 stockDropdown = dcc.Dropdown(
     id='stock-dropdown', 
@@ -79,6 +140,11 @@ stockDropdown = dcc.Dropdown(
     searchable=True,
     value=['AAPL']
 )
+
+slider_card = dbc.Card([dbc.Row([dbc.Col([html.P("Net Income Ratio:"), html.Div(stockSlider)],style=col), 
+                                 dbc.Col([html.P("Operating Income Ratio:"), html.Div(stockSlider2)],style=col)]),
+                        dbc.Row([dbc.Col([html.P("Gross Profit Ratio:"), html.Div(stockSlider3)]), dbc.Col([html.P("EPS"), html.Div(stockSlider4)])]),
+                        dbc.Row([dbc.Col([html.P("Working Capital"), html.Div(stockSlider5)],style=col), dbc.Col([html.P("ROE:"), html.Div(stockSlider6)],style=col)])], style=card)
 
 widget_card = dbc.Card([
                     html.Div(stockDropdown)
@@ -99,7 +165,8 @@ layout = dbc.Container(
             style=row
         ),        
         dbc.Row(widget_card, style=row),   
-        dbc.Row([dbc.Col(line_card),dbc.Col(something_here)], style=row),
+        dbc.Row([dbc.Col(line_card)], style=row),
+        slider_card
     ],
     style=dashboard,
     fluid = True,
