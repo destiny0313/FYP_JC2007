@@ -3,7 +3,7 @@ import numpy as np
 import pandas as pd
 import os
 
-x = fal.get_default_parameters(6685,2)
+x = fal.get_default_parameters(6685,26)
 y = fal.LSHIndex(x)
 filepath = os.path.abspath(os.getcwd())+"//..//Source//attribute_ranking.csv"
 with open(filepath) as ranking:
