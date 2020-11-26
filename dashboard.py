@@ -22,11 +22,25 @@ import yfinance as yf
 import os
 
 filepath = os.path.abspath(os.getcwd())+"\\Source\\Stock_List.csv"
-
 df = pd.read_csv(filepath, index_col=(False))
 
-def create_line_graph(df):
+filepath_ranking = os.path.abspath(os.getcwd())+"\\Source\\attribute_ranking.csv"
+df_ranking = pd.read_csv(filepath_ranking, index_col=(False))
 
+def ranking(a,b,c,d,e,f,g,h,i,j,k,l,m):
+    rank_result = {}
+    final_rank = []
+    for each, content in df_ranking.iterrows():
+        rank_result[content['Unnamed: 0']] = content['Net_Income_Ratio_Ranking']*a+content['Operating_Income_Ratio_Ranking']*b+content['Gross_Profit_Ratio_Ranking']*c+content['EPS_Ranking']*d+content['Working_Capital_Ranking']*e+content['ROE_Ranking']*f+content['PE_Ratio_Ranking']*g+content['PB_Ratio_Ranking']*h+content['Current_Ratio_Ranking']*i+content['Debt_To_Equity_Ranking']*j+content['Debt_To_Asset_Ranking']*k+content['Dividend_Yield_Ranking']*l+content['Market_Capital_Ranking']*m
+        #rank_result[content['Unnamed: 0']] = content['Net_Income_Ratio_Ranking']*a
+    for i in range(10):
+        tmp = min(rank_result.keys(), key = (lambda k: rank_result[k]))
+        final_rank.append(tmp)
+        rank_result.pop(tmp)
+    return final_rank
+
+
+def create_line_graph(df):
     name=""
     data = {}
     for stock in df['Ticket']:
@@ -67,8 +81,18 @@ dashboard = {
     'color': 'white'
 }
 col = {
-       'width' : '33%'
+    'width' : '50%'
 }
+result_header = {
+    'font-family': 'Poppins',
+    'font-weight': 'bold',
+    'font-size': '2em'
+}
+result_subhead = {
+    'font-family': 'Poppins',
+    'font-size': '1em'
+}
+
 
 
 external_stylesheets = ["https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600;700&family=Poppins:wght@400;500;700&display=swap", dbc.themes.BOOTSTRAP]
@@ -77,14 +101,25 @@ app = JupyterDash(__name__, external_stylesheets=external_stylesheets)
 title_component = html.Div(html.H1("📈 FYP JC2007 Dashboard (2020-2021)", style=title))
 line_graph = dcc.Graph(id='line-graph')
 line_card = dbc.Card(line_graph, style=card)
-something_here = html.Div(html.H1("Here is a test", style=title))
+fundamental_ranking_result = dbc.Card([
+    dbc.Row([html.P("Result", style=result_header)], justify = "center", align = "center"),
+    dbc.Row([html.P("1st: ", style=result_subhead), html.P("",id="1st_rank", style=result_subhead)], justify = "center", align = "center", style=row),
+    dbc.Row([html.P("2nd: ", style=result_subhead), html.P("",id="2nd_rank", style=result_subhead)], justify = "center", align = "center", style=row),
+    dbc.Row([html.P("3rd: ", style=result_subhead), html.P("",id="3rd_rank", style=result_subhead)], justify = "center", align = "center", style=row),
+    dbc.Row([html.P("4th: ", style=result_subhead), html.P("",id="4th_rank", style=result_subhead)], justify = "center", align = "center", style=row),
+    dbc.Row([html.P("5th: ", style=result_subhead), html.P("",id="5th_rank", style=result_subhead)], justify = "center", align = "center", style=row),
+    dbc.Row([html.P("6th: ", style=result_subhead), html.P("",id="6th_rank", style=result_subhead)], justify = "center", align = "center", style=row),
+    dbc.Row([html.P("7th: ", style=result_subhead), html.P("",id="7th_rank", style=result_subhead)], justify = "center", align = "center", style=row),
+    dbc.Row([html.P("8th: ", style=result_subhead), html.P("",id="8th_rank", style=result_subhead)], justify = "center", align = "center", style=row),
+    dbc.Row([html.P("9th: ", style=result_subhead), html.P("",id="9th_rank", style=result_subhead)], justify = "center", align = "center", style=row),
+    dbc.Row([html.P("10th: ", style=result_subhead), html.P("",id="10th_rank", style=result_subhead)], justify = "center", align = "center", style=row)],style=card)
 
 stockSlider = dcc.Slider(
     id='stock-slider-Net-Income-Ratio',
     min = 0,
     max = 1,
     step = 0.1,
-    value = 0.5,
+    value = 0.7,
     marks = {0:"0.0",0.1:"0.1",0.2:"0.2",0.3:"0.3",0.4:"0.4",0.5:"0.5",0.6:"0.6",0.7:"0.7",0.8:"0.8",0.9:"0.9",1:"1.0"}
     )
 
@@ -93,16 +128,16 @@ stockSlider2 = dcc.Slider(
     min = 0,
     max = 1,
     step = 0.1,
-    value = 0.5,
+    value = 0.7,
     marks = {0:"0.0",0.1:"0.1",0.2:"0.2",0.3:"0.3",0.4:"0.4",0.5:"0.5",0.6:"0.6",0.7:"0.7",0.8:"0.8",0.9:"0.9",1:"1.0"}
     )
 
 stockSlider3 = dcc.Slider(
-    id='stock-slider-PE-Ratio',
+    id='stock-slider-Gross-Profit-Ratio',
     min = 0,
     max = 1,
     step = 0.1,
-    value = 0.5,
+    value = 1,
     marks = {0:"0.0",0.1:"0.1",0.2:"0.2",0.3:"0.3",0.4:"0.4",0.5:"0.5",0.6:"0.6",0.7:"0.7",0.8:"0.8",0.9:"0.9",1:"1.0"}
     )
 
@@ -111,7 +146,7 @@ stockSlider4 = dcc.Slider(
     min = 0,
     max = 1,
     step = 0.1,
-    value = 0.5,
+    value = 1,
     marks = {0:"0.0",0.1:"0.1",0.2:"0.2",0.3:"0.3",0.4:"0.4",0.5:"0.5",0.6:"0.6",0.7:"0.7",0.8:"0.8",0.9:"0.9",1:"1.0"}
     )
 
@@ -120,7 +155,7 @@ stockSlider5 = dcc.Slider(
     min = 0,
     max = 1,
     step = 0.1,
-    value = 0.5,
+    value = 1,
     marks = {0:"0.0",0.1:"0.1",0.2:"0.2",0.3:"0.3",0.4:"0.4",0.5:"0.5",0.6:"0.6",0.7:"0.7",0.8:"0.8",0.9:"0.9",1:"1.0"}
     )
 
@@ -129,7 +164,7 @@ stockSlider6 = dcc.Slider(
     min = 0,
     max = 1,
     step = 0.1,
-    value = 0.5,
+    value = 0.8,
     marks = {0:"0.0",0.1:"0.1",0.2:"0.2",0.3:"0.3",0.4:"0.4",0.5:"0.5",0.6:"0.6",0.7:"0.7",0.8:"0.8",0.9:"0.9",1:"1.0"}
     )
 stockSlider7 = dcc.Slider(
@@ -137,7 +172,7 @@ stockSlider7 = dcc.Slider(
     min = 0,
     max = 1,
     step = 0.1,
-    value = 0.5,
+    value = 0,
     marks = {0:"0.0",0.1:"0.1",0.2:"0.2",0.3:"0.3",0.4:"0.4",0.5:"0.5",0.6:"0.6",0.7:"0.7",0.8:"0.8",0.9:"0.9",1:"1.0"}
     )
 stockSlider8 = dcc.Slider(
@@ -145,7 +180,7 @@ stockSlider8 = dcc.Slider(
     min = 0,
     max = 1,
     step = 0.1,
-    value = 0.5,
+    value = 0,
     marks = {0:"0.0",0.1:"0.1",0.2:"0.2",0.3:"0.3",0.4:"0.4",0.5:"0.5",0.6:"0.6",0.7:"0.7",0.8:"0.8",0.9:"0.9",1:"1.0"}
     )
 stockSlider9 = dcc.Slider(
@@ -153,7 +188,7 @@ stockSlider9 = dcc.Slider(
     min = 0,
     max = 1,
     step = 0.1,
-    value = 0.5,
+    value = 1.0,
     marks = {0:"0.0",0.1:"0.1",0.2:"0.2",0.3:"0.3",0.4:"0.4",0.5:"0.5",0.6:"0.6",0.7:"0.7",0.8:"0.8",0.9:"0.9",1:"1.0"}
     )
 stockSlider10 = dcc.Slider(
@@ -161,7 +196,7 @@ stockSlider10 = dcc.Slider(
     min = 0,
     max = 1,
     step = 0.1,
-    value = 0.5,
+    value = 0.8,
     marks = {0:"0.0",0.1:"0.1",0.2:"0.2",0.3:"0.3",0.4:"0.4",0.5:"0.5",0.6:"0.6",0.7:"0.7",0.8:"0.8",0.9:"0.9",1:"1.0"}
     )
 stockSlider11 = dcc.Slider(
@@ -169,7 +204,7 @@ stockSlider11 = dcc.Slider(
     min = 0,
     max = 1,
     step = 0.1,
-    value = 0.5,
+    value = 0.8,
     marks = {0:"0.0",0.1:"0.1",0.2:"0.2",0.3:"0.3",0.4:"0.4",0.5:"0.5",0.6:"0.6",0.7:"0.7",0.8:"0.8",0.9:"0.9",1:"1.0"}
     )
 stockSlider12 = dcc.Slider(
@@ -185,7 +220,7 @@ stockSlider13 = dcc.Slider(
     min = 0,
     max = 1,
     step = 0.1,
-    value = 0.5,
+    value = 1,
     marks = {0:"0.0",0.1:"0.1",0.2:"0.2",0.3:"0.3",0.4:"0.4",0.5:"0.5",0.6:"0.6",0.7:"0.7",0.8:"0.8",0.9:"0.9",1:"1.0"}
     )
 
@@ -227,12 +262,14 @@ layout = dbc.Container(
         ),        
         dbc.Row(widget_card, style=row),   
         dbc.Row([dbc.Col(line_card)], style=row),
-        slider_card
+        dbc.Row([dbc.Col(slider_card, style=col), dbc.Col(fundamental_ranking_result, style=col)],style=row)
     ],
     style=dashboard,
     fluid = True,
 )
 app.layout = layout
+
+
 
 @app.callback(
     Output('line-graph', 'figure'),
@@ -250,12 +287,35 @@ def update_figure(stocks):
     return line_fig
 
 @app.callback(
-    Output('a'),
     [
+     Output('1st_rank','children'),
+     Output('2nd_rank','children'),
+     Output('3rd_rank','children'),
+     Output('4th_rank','children'),
+     Output('5th_rank','children'),
+     Output('6th_rank','children'),
+     Output('7th_rank','children'),
+     Output('8th_rank','children'),
+     Output('9th_rank','children'),
+     Output('10th_rank','children')],
+    [
+     Input('stock-slider-Net-Income-Ratio','value'),
+     Input('stock-slider-Operating-Income-Ratio','value'),
+     Input('stock-slider-Gross-Profit-Ratio','value'),
      Input('stock-slider-EPS','value'),
-     Input('','value')]
+     Input('stock-slider-Working-Capital','value'),
+     Input('stock-slider-ROE','value'),
+     Input('stock-slider-PE','value'),
+     Input('stock-slider-PB','value'),
+     Input('stock-slider-Current-Ratio','value'),
+     Input('stock-slider-Debt-To-Equity','value'),
+     Input('stock-slider-Debt-To-Asset','value'),
+     Input('stock-slider-Dividend-Yield','value'),
+     Input('stock-slider-Market-Capital','value'),]
     )
-def test(hi):
-    return 1
+def test(a,b,c,d,e,f,g,h,i,j,k,l,m):
+    rank = []
+    rank = ranking(a,b,c,d,e,f,g,h,i,j,k,l,m)
+    return rank[0],rank[1],rank[2],rank[3],rank[4],rank[5],rank[6],rank[7],rank[8],rank[9]
 
 app.run_server( port=8000)
