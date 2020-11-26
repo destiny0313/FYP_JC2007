@@ -13,4 +13,4 @@ df_tmp = df_tmp.drop(['Unnamed: 0', 'Country','Sector','Industry'], axis=1)
 df = pd.DataFrame.to_numpy(df_tmp)
 print(df_tmp)
     
-x.setup(df)
+y.setup(df)
