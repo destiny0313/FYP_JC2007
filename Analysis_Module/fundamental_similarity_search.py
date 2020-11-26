@@ -7,6 +7,9 @@ x = fal.LSHIndex(fal.get_default_parameters)
 filepath = os.path.abspath(os.getcwd())+"//..//Source//attribute_ranking.csv"
 with open(filepath) as ranking:
     df_tmp = pd.read_csv(ranking)
-    df = pd.DataFrame.to_numpy(df_tmp)
+    
+df_tmp = df_tmp.drop(['Unnamed: 0', 'Country','Sector','Industry'], axis=1)
+df = pd.DataFrame.to_numpy(df_tmp)
+print(df_tmp)
     
 x.setup(df)
