@@ -16,7 +16,7 @@
   - [x] Test with tweets
   - [x] Build result database
 - [ ] Term1 Final Report
----------------------------------------------------------------------------------------
+- - - -
 - [ ] Implement Technical Analysis (10 Jan 2021)
 - [ ] Evaluate Performance (20 Jan 2021)
 - [ ] Actual Analysis (20 Mar 2021)
