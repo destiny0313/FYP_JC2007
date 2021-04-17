@@ -29,7 +29,7 @@ with open('//data//opt//users//destiny//resource//Stock_List.csv','w',newline=''
     i = 1
     j = 1
 
-    while i <= 669:
+    while i <= 739:
         time.sleep(1)
         k = i + 1
         wait = ui.WebDriverWait(driver, 10)
