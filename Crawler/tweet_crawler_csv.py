@@ -9,8 +9,8 @@ access_token = "1296327423244398592-6bOho9V4DYPwFwaPeurjHEmTTiMy3M"
 access_token_secret = "jjEPdYvM3bDcbJYZnFUps9qEWomRvqQh19Cm9zRc4TiD2"
 
 
-with open('//data//opt//users//destiny//resource//Stock_List.csv','r') as stocklist:
-    with open('//data//opt//users//destiny//resource//Tweet.csv','w') as tweetlist:
+with open('//data//opt//users//destiny//real//resource//Stock_List.csv','r') as stocklist:
+    with open('//data//opt//users//destiny//real//resource//Tweet.csv','w') as tweetlist:
         
     # prepare file to be written
         
