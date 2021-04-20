@@ -19,7 +19,7 @@
 - - - -
 - [x] Implement Technical Analysis (10 Jan 2021)
 - [x] Evaluate Performance (20 Jan 2021)
-~~- [ ] Actual Analysis (20 Mar 2021)~~
+- [ ] ~~Actual Analysis (20 Mar 2021)~~
 - [ ] Final Report (20 Apr 2021)
 
 - - - - 
